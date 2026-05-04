@@ -2,495 +2,835 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Palak's Study Plan – May–June 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Palak's Study Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0f14;
-    --surface: #141720;
-    --card: #1a1f2e;
-    --border: #252b3b;
-    --cs: #f59e0b;
-    --cs-dim: #2a1f08;
-    --college: #38bdf8;
-    --college-dim: #0a1f2e;
-    --overlap: #a78bfa;
-    --overlap-dim: #1a1230;
-    --rest: #34d399;
-    --rest-dim: #0a2218;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --accent: #f59e0b;
-  }
+:root {
+  --bg: #0B0C15;
+  --surf: #12131E;
+  --card: #181928;
+  --card2: #1E1F30;
+  --border: rgba(255,255,255,0.07);
+  --cs: #F5A623;
+  --cs-glow: rgba(245,166,35,0.15);
+  --cs-dim: rgba(245,166,35,0.1);
+  --col: #3DCFBE;
+  --col-dim: rgba(61,207,190,0.1);
+  --exam: #FF6F85;
+  --exam-dim: rgba(255,111,133,0.1);
+  --rest: #7EDBB8;
+  --rest-dim: rgba(126,219,184,0.1);
+  --overlap: #A78BFA;
+  --overlap-dim: rgba(167,139,250,0.1);
+  --text: #F0EDE8;
+  --muted: rgba(240,237,232,0.45);
+  --muted2: rgba(240,237,232,0.25);
+  --tab-h: 70px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== HEADER ===== */
+.hero{
+  position:relative;
+  padding:52px 24px 32px;
+  overflow:hidden;
+  background:linear-gradient(160deg, #0f0e1a 0%, #12111f 60%, #0B0C15 100%);
+  border-bottom:1px solid var(--border);
+}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.35;
+}
+.orb1{width:280px;height:280px;background:radial-gradient(circle,#F5A623,transparent 70%);top:-80px;right:-80px}
+.orb2{width:200px;height:200px;background:radial-gradient(circle,#3DCFBE,transparent 70%);bottom:-60px;left:-60px}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    padding: 0;
-  }
+.hero-svg{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.15}
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #0d0f14 0%, #1a1230 50%, #0d0f14 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 40px 24px 32px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -40px; left: 50%; transform: translateX(-50%);
-    width: 500px; height: 200px;
-    background: radial-gradient(ellipse, rgba(245,158,11,0.15) 0%, transparent 70%);
-  }
-  .header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 5vw, 42px);
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: -1px;
-    position: relative;
-  }
-  .header h1 span { color: var(--cs); }
-  .header p {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 13px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+.hero-inner{position:relative;z-index:1}
+.hero-label{
+  font-family:'Outfit',sans-serif;
+  font-size:10px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--cs);
+  margin-bottom:6px;
+  opacity:0.8;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,8vw,44px);
+  font-weight:700;
+  line-height:1.1;
+  color:#fff;
+  letter-spacing:-0.5px;
+}
+.hero-title em{color:var(--cs);font-style:italic}
+.hero-sub{
+  margin-top:6px;
+  font-size:13px;font-weight:400;
+  color:var(--muted);
+  letter-spacing:0.2px;
+}
+.hero-pills{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-top:18px;
+}
+.hpill{
+  display:flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:20px;
+  font-size:11px;font-weight:500;
+  border:1px solid;
+  letter-spacing:0.3px;
+}
+.hpill-cs{background:var(--cs-dim);border-color:rgba(245,166,35,0.3);color:var(--cs)}
+.hpill-col{background:var(--col-dim);border-color:rgba(61,207,190,0.3);color:var(--col)}
+.hpill-exam{background:var(--exam-dim);border-color:rgba(255,111,133,0.3);color:var(--exam)}
+.hpill-rest{background:var(--rest-dim);border-color:rgba(126,219,184,0.3);color:var(--rest)}
 
-  /* LEGEND */
-  .legend {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    justify-content: center;
-    padding: 16px 20px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-  }
-  .leg {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 12px; color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-  .leg-dot {
-    width: 10px; height: 10px; border-radius: 2px;
-  }
+/* ===== BOTTOM TABS ===== */
+.tabs-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  height:calc(var(--tab-h) + env(safe-area-inset-bottom));
+  background:rgba(18,19,30,0.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);
+  display:flex;align-items:flex-start;
+  padding-top:8px;
+  padding-bottom:env(safe-area-inset-bottom);
+  z-index:100;
+}
+.tab-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:4px 4px 0;border:none;background:transparent;
+  color:var(--muted);cursor:pointer;
+  transition:color 0.2s;
+  -webkit-user-select:none;
+}
+.tab-btn.active{color:var(--cs)}
+.tab-icon{width:24px;height:24px;opacity:0.7;transition:opacity 0.2s}
+.tab-btn.active .tab-icon{opacity:1}
+.tab-lbl{font-size:10px;font-weight:500;letter-spacing:0.5px;white-space:nowrap}
+.tab-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--cs);margin-top:2px;
+  opacity:0;transition:opacity 0.2s;
+}
+.tab-btn.active .tab-dot{opacity:1}
 
-  /* TABS */
-  .tabs {
-    display: flex; overflow-x: auto;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0 16px;
-    gap: 4px;
-  }
-  .tab {
-    padding: 12px 18px;
-    background: transparent;
-    border: none; border-bottom: 3px solid transparent;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 500;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-  .tab.active { color: var(--cs); border-bottom-color: var(--cs); }
-  .tab:hover { color: var(--text); }
+/* ===== PANELS ===== */
+.panel{display:none;padding:20px 16px 16px;animation:fadeUp 0.25s ease}
+.panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  /* PHASE PANEL */
-  .panel { display: none; padding: 20px 16px; max-width: 820px; margin: 0 auto; }
-  .panel.active { display: block; }
+/* ===== STRATEGY PAGE ===== */
+.s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:700;
+  color:#fff;margin-bottom:4px;
+}
+.s-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
 
-  .phase-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .phase-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .phase-desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
+.rules-card{
+  background:linear-gradient(135deg,#181928,#1a1530);
+  border:1px solid rgba(167,139,250,0.2);
+  border-radius:16px;padding:16px;margin-bottom:16px;
+}
+.rules-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:600;
+  color:var(--overlap);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.rule{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:13px;color:var(--muted);line-height:1.5;
+}
+.rule:last-child{border-bottom:none}
+.rule-n{
+  min-width:22px;height:22px;border-radius:6px;
+  background:rgba(167,139,250,0.15);color:var(--overlap);
+  font-size:10px;font-weight:600;font-family:'Outfit',monospace;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.rule strong{color:var(--text)}
 
-  /* DAY CARDS */
-  .day-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .day-card:hover { border-color: #3a4055; }
+.schedule-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:16px;margin-bottom:12px;
+}
+.sched-label{
+  font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--cs);margin-bottom:8px;
+}
+.sched-label.col{color:var(--col)}
+.sched-label.red{color:var(--exam)}
+.sched-row{
+  display:flex;gap:10px;align-items:baseline;
+  padding:5px 0;font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.sched-row:last-child{border-bottom:none}
+.sched-t{font-family:'Outfit',monospace;font-size:11px;color:var(--muted2);min-width:90px;flex-shrink:0;padding-top:1px}
+.sched-desc{color:var(--text);font-weight:400}
+.sched-desc.cs{color:var(--cs)}
+.sched-desc.col{color:var(--col)}
+.sched-desc.exam{color:var(--exam)}
 
-  .day-header {
-    display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .day-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    min-width: 70px;
-  }
-  .day-name {
-    font-size: 12px;
-    color: var(--muted);
-    min-width: 50px;
-  }
-  .day-tags { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-  .tag {
-    font-size: 10px;
-    font-family: 'DM Mono', monospace;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-  .tag-cs { background: var(--cs-dim); color: var(--cs); }
-  .tag-col { background: var(--college-dim); color: var(--college); }
-  .tag-overlap { background: var(--overlap-dim); color: var(--overlap); }
-  .tag-exam { background: #1a0a0a; color: #f87171; border: 1px solid #f8717140; }
-  .tag-rest { background: var(--rest-dim); color: var(--rest); }
+/* SUBJECT CHIPS */
+.subj-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+  margin-bottom:16px;
+}
+.subj-chip{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:12px 12px;
+  display:flex;align-items:center;gap:10px;
+  transition:background 0.2s;
+}
+.subj-chip:active{background:var(--card2)}
+.subj-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;
+  background:var(--cs-dim);display:flex;align-items:center;justify-content:center}
+.subj-icon svg{width:18px;height:18px}
+.subj-info{}
+.subj-date{font-size:10px;color:var(--cs);font-weight:600;font-family:'Outfit',monospace;letter-spacing:1px}
+.subj-name{font-size:11px;color:var(--text);font-weight:500;margin-top:1px;line-height:1.3}
 
-  .day-toggle {
-    color: var(--muted); font-size: 14px; margin-left: auto;
-    transition: transform 0.2s;
-  }
-  .day-card.open .day-toggle { transform: rotate(180deg); }
+/* ===== PHASE HEADER ===== */
+.phase-hdr{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:16px;margin-bottom:16px;
+  display:flex;align-items:center;gap:14px;
+}
+.phase-icon{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.phase-label-txt{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.phase-title-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;color:#fff;margin-top:1px;
+}
+.phase-desc-txt{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5}
 
-  .day-body {
-    display: none;
-    padding: 0 16px 14px;
-    border-top: 1px solid var(--border);
-  }
-  .day-card.open .day-body { display: block; }
+/* ===== DAY CARDS ===== */
+.day-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;margin-bottom:8px;overflow:hidden;
+}
+.day-hdr{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 14px;cursor:pointer;
+  -webkit-user-select:none;user-select:none;
+}
+.day-date-box{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--cs-dim);border:1px solid rgba(245,166,35,0.2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.day-date-box.exam-day{background:var(--exam-dim);border-color:rgba(255,111,133,0.2)}
+.day-date-box.rest-day{background:var(--rest-dim);border-color:rgba(126,219,184,0.2)}
+.day-date-box.overlap-day{background:var(--overlap-dim);border-color:rgba(167,139,250,0.2)}
+.day-dd{font-size:14px;font-weight:600;color:var(--cs);line-height:1}
+.day-date-box.exam-day .day-dd{color:var(--exam)}
+.day-date-box.rest-day .day-dd{color:var(--rest)}
+.day-date-box.overlap-day .day-dd{color:var(--overlap)}
+.day-mo{font-size:8px;font-weight:500;color:var(--muted2);letter-spacing:0.5px;text-transform:uppercase}
 
-  .schedule-row {
-    display: flex; gap: 10px; align-items: flex-start;
-    padding: 8px 0;
-    border-bottom: 1px solid #1e2535;
-    font-size: 13px;
-  }
-  .schedule-row:last-child { border-bottom: none; }
-  .sched-time {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    min-width: 85px;
-    padding-top: 2px;
-  }
-  .sched-block { flex: 1; }
-  .sched-subject { font-weight: 500; color: var(--text); }
-  .sched-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.day-mid{flex:1;min-width:0}
+.day-wkd{font-size:10px;color:var(--muted2);font-weight:500;letter-spacing:0.5px}
+.day-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.dtag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:5px;letter-spacing:0.3px}
+.dtag-cs{background:var(--cs-dim);color:var(--cs)}
+.dtag-col{background:var(--col-dim);color:var(--col)}
+.dtag-exam{background:var(--exam-dim);color:var(--exam)}
+.dtag-rest{background:var(--rest-dim);color:var(--rest)}
+.dtag-overlap{background:var(--overlap-dim);color:var(--overlap)}
 
-  .sched-cs { border-left: 2px solid var(--cs); padding-left: 8px; }
-  .sched-college { border-left: 2px solid var(--college); padding-left: 8px; }
-  .sched-rest { border-left: 2px solid var(--rest); padding-left: 8px; }
-  .sched-exam { border-left: 2px solid #f87171; padding-left: 8px; }
+.day-arrow{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--border);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:transform 0.25s,background 0.2s;
+}
+.day-card.open .day-arrow{transform:rotate(180deg);background:rgba(245,166,35,0.15)}
 
-  /* STRATEGY BOX */
-  .strategy-box {
-    background: linear-gradient(135deg, #1a1f2e, #1a1230);
-    border: 1px solid #2d2050;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 20px;
-  }
-  .strategy-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: var(--overlap);
-    margin-bottom: 10px;
-  }
-  .strat-item {
-    display: flex; gap: 10px; align-items: flex-start;
-    margin-bottom: 8px; font-size: 13px; color: var(--muted);
-  }
-  .strat-num {
-    background: var(--overlap-dim);
-    color: var(--overlap);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    padding: 2px 6px; border-radius: 4px;
-    min-width: 24px; text-align: center;
-    margin-top: 1px;
-  }
+.day-body{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.day-body-inner{
+  padding:0 14px 14px;
+  border-top:1px solid var(--border);
+}
+.slot{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:13px;
+}
+.slot:last-child{border-bottom:none}
+.slot-time{
+  font-family:'Outfit',monospace;font-size:10px;
+  color:var(--muted2);min-width:80px;flex-shrink:0;padding-top:2px;
+}
+.slot-bar{width:2px;border-radius:1px;flex-shrink:0;align-self:stretch;margin-top:3px}
+.bar-cs{background:var(--cs)}
+.bar-col{background:var(--col)}
+.bar-exam{background:var(--exam)}
+.bar-rest{background:var(--rest)}
+.slot-info{flex:1}
+.slot-subj{font-weight:500;color:var(--text);font-size:13px;line-height:1.3}
+.slot-note{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
 
-  /* EXAM COUNTDOWN STRIP */
-  .countdown-strip {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  .countdown-pill {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 12px;
-    text-align: center;
-    flex: 1; min-width: 100px;
-  }
-  .countdown-pill .date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
-  .countdown-pill .subj { font-size: 11px; color: var(--text); font-weight: 500; margin-top: 2px; line-height: 1.3; }
-  .countdown-pill.cs-pill { border-color: #f59e0b40; }
-  .countdown-pill.col-pill { border-color: #38bdf840; }
+/* SECTION DIVIDER */
+.section-sep{
+  display:flex;align-items:center;gap:10px;
+  margin:14px 0 10px;
+}
+.sep-line{flex:1;height:1px;background:var(--border)}
+.sep-txt{font-size:10px;color:var(--muted2);font-weight:600;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 
-  /* TIPS */
-  .tip-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--cs);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 12px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .tip-box strong { color: var(--cs); }
-
-  @media (max-width: 480px) {
-    .header { padding: 28px 16px 24px; }
-    .day-name { display: none; }
-  }
+/* SCROLLBAR */
+::-webkit-scrollbar{width:0;height:0}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>Palak's <span>Study Plan</span></h1>
-  <p>May 4 – June 7, 2026 · CS First, College Just Pass</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <!-- Decorative SVG stars -->
+    <svg class="hero-svg" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="30" r="1.5" fill="#F5A623"/>
+      <circle cx="80" cy="60" r="1" fill="#F5A623"/>
+      <circle cx="130" cy="20" r="2" fill="#3DCFBE"/>
+      <circle cx="200" cy="45" r="1.5" fill="#A78BFA"/>
+      <circle cx="270" cy="15" r="1" fill="#F5A623"/>
+      <circle cx="320" cy="55" r="2" fill="#3DCFBE"/>
+      <circle cx="370" cy="25" r="1.5" fill="#F5A623"/>
+      <circle cx="60" cy="90" r="1" fill="#A78BFA"/>
+      <circle cx="160" cy="80" r="1.5" fill="#F5A623"/>
+      <circle cx="230" cy="100" r="1" fill="#3DCFBE"/>
+      <circle cx="300" cy="85" r="2" fill="#A78BFA"/>
+      <circle cx="350" cy="110" r="1" fill="#F5A623"/>
+      <line x1="40" y1="30" x2="80" y2="60" stroke="#F5A623" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="130" y1="20" x2="200" y2="45" stroke="#3DCFBE" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="270" y1="15" x2="320" y2="55" stroke="#A78BFA" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <!-- Book decoration top right -->
+      <g transform="translate(345,140)" opacity="0.2">
+        <rect x="0" y="0" width="36" height="48" rx="3" fill="#F5A623"/>
+        <rect x="4" y="4" width="28" height="2" rx="1" fill="white"/>
+        <rect x="4" y="10" width="20" height="2" rx="1" fill="white"/>
+        <rect x="4" y="16" width="24" height="2" rx="1" fill="white"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-label">Study Planner · 2026</div>
+    <div class="hero-title">Palak's<br><em>Master Plan</em></div>
+    <div class="hero-sub">May 4 – June 7 · CS First, College Just Pass</div>
+    <div class="hero-pills">
+      <div class="hpill hpill-cs">
+        <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.8"/></svg>
+        CS Priority
+      </div>
+      <div class="hpill hpill-col">
+        <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.8"/></svg>
+        College Pass
+      </div>
+      <div class="hpill hpill-exam">
+        <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.8"/></svg>
+        Exam Days
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="legend">
-  <div class="leg"><div class="leg-dot" style="background:var(--cs)"></div>CS Study</div>
-  <div class="leg"><div class="leg-dot" style="background:var(--college)"></div>College Prep</div>
-  <div class="leg"><div class="leg-dot" style="background:#f87171"></div>Exam Day</div>
-  <div class="leg"><div class="leg-dot" style="background:var(--rest)"></div>Break/Rest</div>
-  <div class="leg"><div class="leg-dot" style="background:var(--overlap)"></div>Double Exam Day</div>
-</div>
+<!-- PANELS -->
+<div id="p-overview" class="panel active">
+  <div class="s-title">The Strategy</div>
+  <div class="s-sub">CS exams start June 1 — 7 papers in 7 days. College exams run May 13–June 4. Here's how to win both.</div>
 
-<div class="tabs">
-  <button class="tab active" onclick="showPanel('overview')">📋 Strategy</button>
-  <button class="tab" onclick="showPanel('phase1')">Phase 1 · May 4–12</button>
-  <button class="tab" onclick="showPanel('phase2')">Phase 2 · May 13–31</button>
-  <button class="tab" onclick="showPanel('phase3')">Phase 3 · June 1–7</button>
-</div>
-
-<!-- OVERVIEW -->
-<div id="overview" class="panel active">
-  <div class="phase-label">Master Strategy</div>
-  <div class="phase-title">The Game Plan</div>
-  <div class="phase-desc">CS exams = ace. College exams = pass. Here's how Palak wins both.</div>
-
-  <div class="strategy-box">
-    <h3>⚡ Core Rules</h3>
-    <div class="strat-item"><div class="strat-num">01</div><span><strong style="color:var(--text)">CS is the priority always.</strong> Never skip CS study for college prep. College just needs passing marks.</span></div>
-    <div class="strat-item"><div class="strat-num">02</div><span><strong style="color:var(--text)">1 hour college prep maximum</strong> per night before a college exam. Use old papers + notes only.</span></div>
-    <div class="strat-item"><div class="strat-num">03</div><span><strong style="color:var(--text)">CS exams: June 1–7.</strong> College exams don't stop until June 4 — manage energy carefully.</span></div>
-    <div class="strat-item"><div class="strat-num">04</div><span><strong style="color:var(--text)">June 2 & 4 are double-duty days.</strong> CS exam in morning (9am), college exam in afternoon (3pm). Sleep extra the night before.</span></div>
-    <div class="strat-item"><div class="strat-num">05</div><span><strong style="color:var(--text)">Daily revision is mandatory.</strong> Spend last 30 mins of every study session reviewing what you learned that day.</span></div>
+  <div class="rules-card">
+    <h3>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.3 6.3L17 7.1L13 11L14 17L9 14.3L4 17L5 11L1 7.1L6.7 6.3L9 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
+      Core Rules
+    </h3>
+    <div class="rule"><div class="rule-n">01</div><span><strong>CS is always priority.</strong> Never sacrifice morning CS blocks for college prep.</span></div>
+    <div class="rule"><div class="rule-n">02</div><span><strong>Max 1 hr college prep</strong> per night before an exam — old notes + past papers only.</span></div>
+    <div class="rule"><div class="rule-n">03</div><span><strong>June 2 & 4 are double days.</strong> CS exam at 9am, college exam at 3pm. Sleep well the night before.</span></div>
+    <div class="rule"><div class="rule-n">04</div><span><strong>Last 30 mins = revision.</strong> Every session ends with a review of what was studied.</span></div>
+    <div class="rule"><div class="rule-n">05</div><span><strong>Sundays are half-days.</strong> 4 hrs CS max. Rest is not wasted time.</span></div>
   </div>
 
-  <div class="phase-label">Time Allocation</div>
-  <div class="phase-title" style="font-size:18px;margin-bottom:16px">Daily Schedule Template</div>
+  <div class="section-sep"><div class="sep-line"></div><div class="sep-txt">Daily Templates</div><div class="sep-line"></div></div>
 
-  <div class="tip-box"><strong>Phase 1 (May 4–12) — No College Exams</strong><br>
-    9:00–1:00 PM → CS Study Block 1 (4 hrs)<br>
-    1:00–2:00 PM → Lunch + Rest<br>
-    2:00–5:00 PM → CS Study Block 2 (3 hrs)<br>
-    5:00–5:30 PM → Walk / break<br>
-    6:00–9:00 PM → CS Study Block 3 (3 hrs)<br>
-    <em>Total CS: ~10 hrs/day</em>
+  <div class="schedule-card">
+    <div class="sched-label">Phase 1 · May 4–12 · Pure CS Days</div>
+    <div class="sched-row"><div class="sched-t">9:00 – 1:00</div><div class="sched-desc cs">CS Block 1 — 4 hrs</div></div>
+    <div class="sched-row"><div class="sched-t">1:00 – 2:00</div><div class="sched-desc" style="color:var(--rest)">Lunch + Rest</div></div>
+    <div class="sched-row"><div class="sched-t">2:00 – 5:00</div><div class="sched-desc cs">CS Block 2 — 3 hrs</div></div>
+    <div class="sched-row"><div class="sched-t">5:00 – 5:30</div><div class="sched-desc" style="color:var(--rest)">Walk / decompress</div></div>
+    <div class="sched-row"><div class="sched-t">6:00 – 9:00</div><div class="sched-desc cs">CS Block 3 — 3 hrs</div></div>
   </div>
 
-  <div class="tip-box"><strong>Phase 2 (May 13–31) — College Exams Running</strong><br>
-    9:00–1:00 PM → CS Study (4 hrs)<br>
-    1:00–2:00 PM → Lunch + Rest<br>
-    2:00–2:45 PM → CS quick revision<br>
-    <span style="color:var(--college)">3:00–5:00 PM → College Exam</span><br>
-    5:00–6:00 PM → Decompress, eat<br>
-    6:30–9:00 PM → CS Study (2.5 hrs)<br>
-    <em>Non-exam days: full CS focus</em>
+  <div class="schedule-card">
+    <div class="sched-label col">Phase 2 · May 13–31 · College Exams Mixed</div>
+    <div class="sched-row"><div class="sched-t">9:00 – 1:00</div><div class="sched-desc cs">CS Study — 4 hrs</div></div>
+    <div class="sched-row"><div class="sched-t">1:00 – 2:00</div><div class="sched-desc" style="color:var(--rest)">Lunch + Rest</div></div>
+    <div class="sched-row"><div class="sched-t">2:00 – 2:45</div><div class="sched-desc col">College quick prep (exam days only)</div></div>
+    <div class="sched-row"><div class="sched-t">3:00 – 5:00</div><div class="sched-desc exam">College Exam</div></div>
+    <div class="sched-row"><div class="sched-t">6:30 – 9:00</div><div class="sched-desc cs">CS Evening — 2.5 hrs</div></div>
   </div>
 
-  <div class="tip-box"><strong>Phase 3 (June 1–7) — CS Exam Week</strong><br>
-    <span style="color:#f87171">9:00 AM–12:15 PM → CS EXAM</span><br>
-    12:15–1:30 PM → Lunch, relax<br>
-    1:30–2:30 PM → Next CS subject light revision<br>
-    <span style="color:var(--college)">June 2 & 4 only: 3:00–5:00 PM → College Exam</span><br>
-    5:30–8:00 PM → Revise next day's CS subject
+  <div class="schedule-card">
+    <div class="sched-label red">Phase 3 · June 1–7 · CS Exam Week</div>
+    <div class="sched-row"><div class="sched-t">9:00 – 12:15</div><div class="sched-desc exam">CS EXAM</div></div>
+    <div class="sched-row"><div class="sched-t">12:15 – 1:30</div><div class="sched-desc" style="color:var(--rest)">Lunch + relax</div></div>
+    <div class="sched-row"><div class="sched-t">1:30 – 2:30</div><div class="sched-desc cs">Light revision: next subject</div></div>
+    <div class="sched-row"><div class="sched-t">3:00 – 5:00</div><div class="sched-desc col">College exam (Jun 2 & 4 only)</div></div>
+    <div class="sched-row"><div class="sched-t">5:30 – 8:00</div><div class="sched-desc cs">Revise tomorrow's CS subject</div></div>
   </div>
 
-  <div class="phase-label" style="margin-top:24px">CS Subjects</div>
-  <div class="phase-title" style="font-size:18px;margin-bottom:12px">Subject → Exam Date Mapping</div>
-  <div class="countdown-strip">
-    <div class="countdown-pill cs-pill"><div class="date">01 Jun</div><div class="subj">Jurisprudence & General Laws</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">02 Jun</div><div class="subj">Capital Market & Securities</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">03 Jun</div><div class="subj">Company Law & Practice</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">04 Jun</div><div class="subj">Economic & IP Laws</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">05 Jun</div><div class="subj">Setting Up of Business Laws</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">06 Jun</div><div class="subj">Tax Laws & Practice</div></div>
-    <div class="countdown-pill cs-pill"><div class="date">07 Jun</div><div class="subj">Corporate Accounting & FM</div></div>
+  <div class="section-sep"><div class="sep-line"></div><div class="sep-txt">CS Exam Schedule</div><div class="sep-line"></div></div>
+
+  <div class="subj-grid">
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M9 2v2M5 9H2M16 9h-3M9 14v2"/><circle cx="9" cy="9" r="3.5"/>
+          <line x1="5.5" y1="5.5" x2="6.8" y2="6.8"/><line x1="12.5" y1="5.5" x2="11.2" y2="6.8"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">01 JUN</div>
+        <div class="subj-name">Jurisprudence &amp; General Laws</div>
+      </div>
+    </div>
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <polyline points="2,14 6,8 9,11 12,6 16,4"/>
+          <polyline points="12,4 16,4 16,8"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">02 JUN</div>
+        <div class="subj-name">Capital Market &amp; Securities</div>
+      </div>
+    </div>
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <rect x="3" y="8" width="12" height="8" rx="1"/>
+          <path d="M6 8V6a3 3 0 016 0v2"/>
+          <circle cx="9" cy="12" r="1.5" fill="var(--cs)"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">03 JUN</div>
+        <div class="subj-name">Company Law &amp; Practice</div>
+      </div>
+    </div>
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M9 2a4 4 0 00-1 7.9V13h2v-3.1A4 4 0 009 2z"/>
+          <path d="M7 14h4M7.5 16h3"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">04 JUN</div>
+        <div class="subj-name">Economic &amp; IP Laws</div>
+      </div>
+    </div>
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M9 2L11 7h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">05 JUN</div>
+        <div class="subj-name">Setting Up of Business Laws</div>
+      </div>
+    </div>
+    <div class="subj-chip">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <rect x="3" y="2" width="12" height="14" rx="1.5"/>
+          <path d="M6 6h6M6 9h4M6 12h3"/>
+          <circle cx="13" cy="12" r="2" fill="var(--cs-dim)" stroke="var(--cs)"/>
+          <path d="M12 12l.7.7 1.3-1.3"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">06 JUN</div>
+        <div class="subj-name">Tax Laws &amp; Practice</div>
+      </div>
+    </div>
+    <div class="subj-chip" style="grid-column:1/-1">
+      <div class="subj-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="var(--cs)" stroke-width="1.5" stroke-linecap="round">
+          <rect x="2" y="3" width="14" height="12" rx="1.5"/>
+          <path d="M6 7h2v6H6zM10 9h2v4h-2zM5 3v-1M13 3v-1"/>
+        </svg>
+      </div>
+      <div class="subj-info">
+        <div class="subj-date">07 JUN · FINAL</div>
+        <div class="subj-name">Corporate Accounting &amp; Financial Management</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- PHASE 1 -->
-<div id="phase1" class="panel">
-  <div class="phase-label">Phase 1 · May 4–12</div>
-  <div class="phase-title">Pure CS Grind 🔥</div>
-  <div class="phase-desc">No college exams yet. Full day CS. Build deep understanding of all 7 subjects. Start with the heaviest ones.</div>
-
-  <!-- Day cards phase 1 -->
-  <div id="p1days"></div>
+<div id="p-phase1" class="panel">
+  <div class="phase-hdr">
+    <div class="phase-icon" style="background:var(--cs-dim)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cs)" stroke-width="1.8" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <div>
+      <div class="phase-label-txt">Phase 1 · May 4–12</div>
+      <div class="phase-title-txt">Pure CS Grind</div>
+      <div class="phase-desc-txt">No college exams. Full 10-hr CS days. Heaviest subjects first.</div>
+    </div>
+  </div>
+  <div id="p1-cards"></div>
 </div>
 
 <!-- PHASE 2 -->
-<div id="phase2" class="panel">
-  <div class="phase-label">Phase 2 · May 13–31</div>
-  <div class="phase-title">CS + College Juggle ⚖️</div>
-  <div class="phase-desc">College exams every few days (3-5pm). Mornings are sacred CS time. 1 hr max for college prep the night before.</div>
-
-  <div id="p2days"></div>
+<div id="p-phase2" class="panel">
+  <div class="phase-hdr">
+    <div class="phase-icon" style="background:var(--col-dim)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--col)" stroke-width="1.8" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    </div>
+    <div>
+      <div class="phase-label-txt">Phase 2 · May 13–31</div>
+      <div class="phase-title-txt">CS + College Juggle</div>
+      <div class="phase-desc-txt">College exams start. Mornings are sacred CS time always.</div>
+    </div>
+  </div>
+  <div id="p2-cards"></div>
 </div>
 
 <!-- PHASE 3 -->
-<div id="phase3" class="panel">
-  <div class="phase-label">Phase 3 · June 1–7</div>
-  <div class="phase-title">CS Exam Week 🎯</div>
-  <div class="phase-desc">One CS exam every morning. June 2 & June 4 also have college exams in afternoon. Stay calm, you've prepared.</div>
+<div id="p-phase3" class="panel">
+  <div class="phase-hdr">
+    <div class="phase-icon" style="background:var(--exam-dim)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--exam)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    </div>
+    <div>
+      <div class="phase-label-txt">Phase 3 · June 1–7</div>
+      <div class="phase-title-txt">CS Exam Week</div>
+      <div class="phase-desc-txt">One CS exam every morning. Jun 2 & 4 have college too.</div>
+    </div>
+  </div>
+  <div id="p3-cards"></div>
+</div>
 
-  <div id="p3days"></div>
+<!-- BOTTOM TABS -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('overview',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    <span class="tab-lbl">Strategy</span>
+    <div class="tab-dot"></div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('phase1',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <span class="tab-lbl">May 4–12</span>
+    <div class="tab-dot"></div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('phase2',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <span class="tab-lbl">May 13–31</span>
+    <div class="tab-dot"></div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('phase3',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    <span class="tab-lbl">Jun 1–7</span>
+    <div class="tab-dot"></div>
+  </button>
 </div>
 
 <script>
-function showPanel(id) {
+// Tab switching
+function switchTab(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('p-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function toggleCard(card) {
-  card.classList.toggle('open');
+// Accordion toggle
+function toggleDay(card) {
+  const body = card.querySelector('.day-body');
+  if (card.classList.contains('open')) {
+    card.classList.remove('open');
+    body.style.maxHeight = '0';
+  } else {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
 }
 
-function makeCard(date, dayName, tags, schedule) {
-  const tagHTML = tags.map(t => `<span class="tag tag-${t.type}">${t.label}</span>`).join('');
-  const schedHTML = schedule.map(s => `
-    <div class="schedule-row">
-      <div class="sched-time">${s.time}</div>
-      <div class="sched-block sched-${s.type}">
-        <div class="sched-subject">${s.subject}</div>
-        ${s.note ? `<div class="sched-note">${s.note}</div>` : ''}
+// Build a day card
+function mkCard(dd, mo, wkd, type, tags, slots) {
+  const boxCls = type === 'exam' ? 'exam-day' : type === 'rest' ? 'rest-day' : type === 'overlap' ? 'overlap-day' : '';
+  const tagHtml = tags.map(t => `<span class="dtag dtag-${t[0]}">${t[1]}</span>`).join('');
+  const slotHtml = slots.map(s => `
+    <div class="slot">
+      <div class="slot-time">${s[0]}</div>
+      <div class="slot-bar bar-${s[1]}"></div>
+      <div class="slot-info">
+        <div class="slot-subj">${s[2]}</div>
+        ${s[3] ? `<div class="slot-note">${s[3]}</div>` : ''}
+      </div>
+    </div>`).join('');
+
+  const card = document.createElement('div');
+  card.className = 'day-card';
+  card.innerHTML = `
+    <div class="day-hdr" onclick="toggleDay(this.parentElement)">
+      <div class="day-date-box ${boxCls}">
+        <div class="day-dd">${dd}</div>
+        <div class="day-mo">${mo}</div>
+      </div>
+      <div class="day-mid">
+        <div class="day-wkd">${wkd}</div>
+        <div class="day-tags">${tagHtml}</div>
+      </div>
+      <div class="day-arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
       </div>
     </div>
-  `).join('');
-
-  return `
-    <div class="day-card" onclick="toggleCard(this)">
-      <div class="day-header">
-        <div class="day-date">${date}</div>
-        <div class="day-name">${dayName}</div>
-        <div class="day-tags">${tagHTML}</div>
-        <div class="day-toggle">▾</div>
-      </div>
-      <div class="day-body">${schedHTML}</div>
-    </div>
-  `;
+    <div class="day-body">
+      <div class="day-body-inner">${slotHtml}</div>
+    </div>`;
+  return card;
 }
 
-// PHASE 1 DATA
-const phase1 = [
-  { date: 'May 4', day: 'Mon', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Corporate Accounting & FM – Part 1', note:'Financial statements, ratio analysis, fund flow'},
-    {time:'2pm–5pm', type:'cs', subject:'Corporate Accounting & FM – Part 2', note:'Marginal costing, standard costing'},
-    {time:'6pm–9pm', type:'cs', subject:'Corporate Accounting & FM – Practice Sums', note:'Numericals are key — solve past papers'},
-  ]},
-  { date: 'May 5', day: 'Tue', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Corporate Accounting & FM – Revision + Past Papers', note:'Focus on weak numericals'},
-    {time:'2pm–5pm', type:'cs', subject:'Tax Laws & Practice – Part 1', note:'GST basics, CGST/SGST, registration'},
-    {time:'6pm–9pm', type:'cs', subject:'Tax Laws & Practice – Part 2', note:'Income Tax provisions, TDS, advance tax'},
-  ]},
-  { date: 'May 6', day: 'Wed', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Tax Laws & Practice – Part 3', note:'Returns, appeals, penalties'},
-    {time:'2pm–5pm', type:'cs', subject:'Tax Laws – Past Papers', note:'Section-wise questions'},
-    {time:'6pm–9pm', type:'cs', subject:'Company Law & Practice – Part 1', note:'Incorporation, MOA, AOA, share capital'},
-  ]},
-  { date: 'May 7', day: 'Thu', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Company Law & Practice – Part 2', note:'Board meetings, resolutions, AGM'},
-    {time:'2pm–5pm', type:'cs', subject:'Company Law & Practice – Part 3', note:'Directors, KMPs, audit committee'},
-    {time:'6pm–9pm', type:'cs', subject:'Company Law – Past Papers'},
-  ]},
-  { date: 'May 8', day: 'Fri', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Company Law – Revision + Winding Up, Insolvency'},
-    {time:'2pm–5pm', type:'cs', subject:'Capital Market & Securities Laws – Part 1', note:'SEBI regulations, LODR, insider trading'},
-    {time:'6pm–9pm', type:'cs', subject:'Capital Market – Part 2', note:'SEBI SAST, takeovers, delisting'},
-  ]},
-  { date: 'May 9', day: 'Sat', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Capital Market – Part 3 + Past Papers', note:'Depositories, brokers, market infra'},
-    {time:'2pm–5pm', type:'cs', subject:'Economic, Commercial & IP Laws – Part 1', note:'Competition Act, Consumer Protection'},
-    {time:'6pm–9pm', type:'cs', subject:'Economic & IP Laws – Part 2', note:'FEMA, patents, trademarks, copyright'},
-  ]},
-  { date: 'May 10', day: 'Sun', tags: [{type:'rest',label:'Light Day'},{type:'cs',label:'CS'}], schedule: [
-    {time:'9am–12pm', type:'cs', subject:'Economic & IP Laws – Part 3 + Revision'},
-    {time:'12pm–3pm', type:'rest', subject:'Rest / Family time / Light reading', note:'Recharge — next week is intense'},
-    {time:'4pm–7pm', type:'cs', subject:'Setting Up of Business & Labour Laws – Part 1', note:'LLP, partnership, Companies Act startups'},
-  ]},
-  { date: 'May 11', day: 'Mon', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'Setting Up of Business Laws – Part 2', note:'Industrial laws, PF, ESI, gratuity'},
-    {time:'2pm–5pm', type:'cs', subject:'Jurisprudence & General Laws – Part 1', note:'Interpretation of statutes, IPC basics'},
-    {time:'6pm–9pm', type:'cs', subject:'Jurisprudence – Part 2', note:'CPC, CrPC, Limitation Act, Evidence Act'},
-  ]},
-  { date: 'May 12', day: 'Tue', tags: [{type:'cs',label:'CS Revision'}], schedule: [
-    {time:'9am–12pm', type:'cs', subject:'Jurisprudence – Revision + Past Papers'},
-    {time:'1pm–4pm', type:'cs', subject:'Quick recap: Company Law highlights'},
-    {time:'5pm–8pm', type:'cs', subject:'Quick recap: Tax Laws highlights'},
-  ]},
+// ======= PHASE 1 DATA =======
+const p1 = [
+  ['4','MAY','Monday',  'cs', [['cs','CS Study']],
+   [['9am – 1pm','cs','Corporate Accounting & FM – Part 1','Financial statements, ratio analysis, fund flow statement'],
+    ['2pm – 5pm','cs','Corporate Accounting & FM – Part 2','Marginal costing, standard costing, budgets'],
+    ['6pm – 9pm','cs','Practice: Numericals & Past Papers','Numericals are key — solve as many as possible']]],
+
+  ['5','MAY','Tuesday', 'cs', [['cs','CS Study']],
+   [['9am – 1pm','cs','Corporate Accounting & FM – Revision','Strengthen weak numericals from yesterday'],
+    ['2pm – 5pm','cs','Tax Laws & Practice – Part 1','GST basics, CGST/SGST/IGST, registration rules'],
+    ['6pm – 9pm','cs','Tax Laws & Practice – Part 2','Income Tax provisions, TDS, advance tax']]],
+
+  ['6','MAY','Wednesday','cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','Tax Laws – Part 3','Returns, assessments, appeals, penalties'],
+    ['2pm – 5pm','cs','Tax Laws – Past Papers','Section-wise past paper questions'],
+    ['6pm – 9pm','cs','Company Law & Practice – Part 1','Incorporation, MOA, AOA, share capital']]],
+
+  ['7','MAY','Thursday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','Company Law – Part 2','Board meetings, resolutions, postal ballot, AGM'],
+    ['2pm – 5pm','cs','Company Law – Part 3','Directors, KMPs, audit committee, CSR'],
+    ['6pm – 9pm','cs','Company Law – Past Papers','']]],
+
+  ['8','MAY','Friday',  'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','Company Law – Revision','Winding up, insolvency, NCLT proceedings'],
+    ['2pm – 5pm','cs','Capital Market & Securities – Part 1','SEBI regulations, LODR, insider trading rules'],
+    ['6pm – 9pm','cs','Capital Market – Part 2','SEBI SAST takeover code, delisting, buy-back']]],
+
+  ['9','MAY','Saturday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','Capital Market – Part 3 + Past Papers','Depositories, brokers, market infrastructure'],
+    ['2pm – 5pm','cs','Economic, Commercial & IP Laws – Part 1','Competition Act, Consumer Protection Act'],
+    ['6pm – 9pm','cs','Economic & IP Laws – Part 2','FEMA, patents, trademarks, copyright']]],
+
+  ['10','MAY','Sunday',  'rest',[['rest','Light Day'],['cs','CS']],
+   [['9am – 12pm','cs','Economic & IP Laws – Part 3 + Revision',''],
+    ['12pm – 3pm','rest','Rest / Family time','You have earned it — recharge for the final push'],
+    ['4pm – 7pm','cs','Setting Up of Business Laws – Part 1','LLP, partnership firms, Companies Act startups']]],
+
+  ['11','MAY','Monday',  'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','Setting Up of Business Laws – Part 2','Industrial laws, PF, ESI, Gratuity, Minimum Wages'],
+    ['2pm – 5pm','cs','Jurisprudence & General Laws – Part 1','Interpretation of statutes, IPC provisions'],
+    ['6pm – 9pm','cs','Jurisprudence – Part 2','CPC, CrPC, Limitation Act, Evidence Act']]],
+
+  ['12','MAY','Tuesday', 'cs',[['cs','CS Revision']],
+   [['9am – 12pm','cs','Jurisprudence – Revision + Past Papers',''],
+    ['1pm – 4pm','cs','Quick Recap: Company Law highlights','Memorise key sections & thresholds'],
+    ['5pm – 8pm','cs','Quick Recap: Tax Laws highlights','GST rates, key sections, important provisions']]],
 ];
 
-// PHASE 2 DATA
-const phase2 = [
-  { date: 'May 13', day: 'Wed', tags: [{type:'exam',label:'COLLEGE EXAM'},{type:'cs',label:'CS'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'CS Revision: Capital Market Laws'},
-    {time:'2pm–2:45pm', type:'college', subject:'College Quick Prep: [First Subject]', note:'Use notes/past paper only – 45 mins max'},
-    {time:'3pm–5pm', type:'exam', subject:'📝 COLLEGE EXAM', note:''},
-    {time:'6pm–9pm', type:'cs', subject:'CS: Economic & IP Laws revision'},
-  ]},
-  { date: 'May 14', day: 'Thu', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'CS: Economic & IP Laws deep dive'},
-    {time:'2pm–5pm', type:'cs', subject:'CS: Setting Up of Business revision'},
-    {time:'6pm–9pm', type:'cs', subject:'CS: Jurisprudence – key sections'},
-  ]},
-  { date: 'May 15', day: 'Fri', tags: [{type:'exam',label:'COLLEGE EXAM'},{type:'cs',label:'CS'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'CS: Corporate Accounting – numerical practice'},
-    {time:'2pm–2:45pm', type:'college', subject:'College Quick Prep: English Language & Indian Culture', note:'Key topics, grammar basics – 45 mins only'},
-    {time:'3pm–5pm', type:'exam', subject:'📝 COLLEGE EXAM: English Language & Indian Culture'},
-    {time:'6pm–9pm', type:'cs', subject:'CS: Tax Laws – quick revision'},
-  ]},
-  { date: 'May 16', day: 'Sat', tags: [{type:'cs',label:'CS Study'}], schedule: [
-    {time:'9am–1pm', type:'cs', subject:'CS: Company
+// ======= PHASE 2 DATA =======
+const p2 = [
+  ['13','MAY','Wednesday','exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Capital Market Laws – Full Revision',''],
+    ['2pm – 2:45pm','col','College Quick Prep','Use notes & past papers only — 45 mins max'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Economic & IP Laws – Revision','']]],
+
+  ['14','MAY','Thursday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Economic & IP Laws – Deep Dive','Competition Act, Consumer Protection, FEMA'],
+    ['2pm – 5pm','cs','CS: Setting Up of Business – Full Revision',''],
+    ['6pm – 9pm','cs','CS: Jurisprudence – Key Sections','Critical sections and landmark cases']]],
+
+  ['15','MAY','Friday',  'exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Corporate Accounting – Numerical Practice','Focus on tricky numericals and past paper sums'],
+    ['2pm – 2:45pm','col','College Quick Prep: English & Indian Culture','Key topics, grammar, essay outlines — 45 mins'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM: English Language & Indian Culture',''],
+    ['6pm – 9pm','cs','CS: Tax Laws – Quick Revision','']]],
+
+  ['16','MAY','Saturday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Company Law – Mock Test Format','Solve past 3 years full papers under timed conditions'],
+    ['2pm – 5pm','cs','CS: Capital Market – Weak Areas','SEBI SAST, delisting, insider trading deep-dive'],
+    ['6pm – 9pm','cs','CS: Jurisprudence – Past Papers','']]],
+
+  ['17','MAY','Sunday',  'rest',[['rest','Light Day'],['cs','CS']],
+   [['10am – 1pm','cs','CS: Setting Up of Business – Numericals & Cases',''],
+    ['2pm – 4pm','rest','Rest / Family time','Protect your mental energy'],
+    ['5pm – 8pm','cs','CS: Tax Laws – GST Comprehensive Revision','']]],
+
+  ['18','MAY','Monday',  'exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Economic & IP Laws – Mock Test','Full syllabus past paper practice'],
+    ['2pm – 2:45pm','col','College Quick Prep: [Economics / your subject]','Notes + past paper — 45 mins max'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Company Law – Directors & Resolutions revision','']]],
+
+  ['19','MAY','Tuesday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Full Syllabus Scan — Identify Gaps','Which subjects feel weakest? Target those'],
+    ['2pm – 5pm','cs','CS: Corporate Accounting – FM Section Deep Dive','Capital budgeting, working capital'],
+    ['6pm – 9pm','cs','CS: Jurisprudence + Capital Market Combo Revision','']]],
+
+  ['20','MAY','Wednesday','exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Tax Laws – Income Tax Comprehensive','TDS, advance tax, assessment procedures'],
+    ['2pm – 2:45pm','col','College Quick Prep: [your subject]','45 mins — notes & past paper only'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Setting Up of Business + Economic Laws revision','']]],
+
+  ['21','MAY','Thursday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Jurisprudence – Full Past Paper Practice','Target scoring high on this June 1st exam'],
+    ['2pm – 5pm','cs','CS: Capital Market – SEBI Comprehensive Revision',''],
+    ['6pm – 9pm','cs','CS: Company Law – Board Governance & KMP Chapters','']]],
+
+  ['22','MAY','Friday',  'exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Tax Laws + Corporate Accounting combo','Both exam subjects — rotate focus every 1 hr'],
+    ['2pm – 2:45pm','col','College Quick Prep: [your subject]',''],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Economic & IP Laws – Case-based questions','']]],
+
+  ['23','MAY','Saturday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Company Law – Full Mock Test (Past Paper)','3 hrs timed, full paper'],
+    ['2pm – 5pm','cs','CS: Jurisprudence – Statutes & Definitions','Key definitions often repeated in exams'],
+    ['6pm – 9pm','cs','CS: Capital Market – Revision + Q&A','']]],
+
+  ['24','MAY','Sunday',  'rest',[['rest','Light Day'],['cs','CS']],
+   [['10am – 1pm','cs','CS: Corporate Accounting – Ratios & Fund Flow','Numerical drill'],
+    ['2pm – 4pm','rest','Rest — full afternoon off','You need this. Non-negotiable.'],
+    ['5pm – 7pm','cs','CS: Quick scan of all 7 subjects — note weak spots','']]],
+
+  ['25','MAY','Monday',  'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Setting Up of Business – Full Past Papers',''],
+    ['2pm – 5pm','cs','CS: Tax Laws – GST + Income Tax Combined Mock',''],
+    ['6pm – 9pm','cs','CS: Jurisprudence – IPC, CrPC, Evidence Act revision','']]],
+
+  ['26','MAY','Tuesday', 'exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Capital Market + Economic Laws – Last Push',''],
+    ['2pm – 2:45pm','col','College Quick Prep: [your subject]',''],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Company Law – Winding Up & Insolvency chapter','']]],
+
+  ['27','MAY','Wednesday','cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Corporate Accounting – Full Paper Practice',''],
+    ['2pm – 5pm','cs','CS: Tax Laws – Past 3 Years Papers',''],
+    ['6pm – 9pm','cs','CS: Economic & IP Laws – IP section (Patents, TM, Copyright)','']]],
+
+  ['28','MAY','Thursday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: Jurisprudence – Full Revision + Flash Cards','Last proper study session for this subject'],
+    ['2pm – 5pm','cs','CS: Capital Market – SEBI Acts & Regulations',''],
+    ['6pm – 9pm','cs','CS: Company Law – Final Revision sweep','']]],
+
+  ['29','MAY','Friday',  'exam',[['exam','College Exam'],['cs','CS']],
+   [['9am – 1pm','cs','CS: Setting Up of Business + Tax Laws Revision',''],
+    ['2pm – 2:45pm','col','College Quick Prep: [your subject]',''],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM',''],
+    ['6pm – 9pm','cs','CS: Corporate Accounting – Final numerical practice','']]],
+
+  ['30','MAY','Saturday', 'cs',[['cs','CS Study']],
+   [['9am – 1pm','cs','CS: ALL 7 Subjects – 1 hr speed review each (7×1hr)','High-level: what are the key topics of each?'],
+    ['2pm – 5pm','cs','CS: Past Paper Marathon – Mixed Questions','Mix subjects: do not stay on one too long'],
+    ['6pm – 8pm','cs','CS: Exam-day prep: stationery, hall ticket, route','']]],
+
+  ['31','MAY','Sunday',  'rest',[['rest','Pre-Exam Rest'],['cs','CS']],
+   [['10am – 1pm','cs','CS: Jurisprudence – Final revision (Exam tomorrow!)','Focus on statutes, cases, definitions — high yield'],
+    ['1pm – 5pm','rest','REST — proper afternoon off','Sleep, eat well. No panic studying. Trust the prep.'],
+    ['6pm – 8pm','cs','CS: Jurisprudence – Light flip through notes only','']]],
+];
+
+// ======= PHASE 3 DATA =======
+const p3 = [
+  ['1','JUN','Monday', 'exam',[['exam','CS EXAM']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Jurisprudence & General Laws','Subject 1 of 7 — you have got this!'],
+    ['12:15 – 1:30pm','rest','Lunch + Relax','Do not discuss the paper — just decompress'],
+    ['1:30 – 3pm','cs','Light Revision: Capital Market (exam tomorrow)','Flip through key SEBI regulations'],
+    ['5:30 – 8pm','cs','Capital Market – Focused Revision','Takeover code, insider trading, depositories']]],
+
+  ['2','JUN','Tuesday', 'overlap',[['exam','CS EXAM'],['col','College Exam']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Capital Market & Securities Laws',''],
+    ['12:15 – 1:30pm','rest','Lunch — light meal, no heavy food',''],
+    ['2pm – 2:45pm','col','College Prep: [your subject] — notes only','45 mins max, then stop'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM','Double exam day — stay calm, you are prepared'],
+    ['5:30 – 8pm','cs','Company Law – Light Revision (exam tomorrow)','Key sections, board governance, KMP']]],
+
+  ['3','JUN','Wednesday','exam',[['exam','CS EXAM']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Company Law & Practice','Subject 3 — the big one'],
+    ['12:15 – 1:30pm','rest','Lunch + Walk','Get some fresh air'],
+    ['1:30 – 4pm','cs','Economic & IP Laws – Revision (exam tomorrow)','Competition Act, FEMA, IP rights'],
+    ['5:30 – 8pm','cs','Economic & IP Laws – Key Definitions & Cases','']]],
+
+  ['4','JUN','Thursday', 'overlap',[['exam','CS EXAM'],['col','College Exam']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Economic, Commercial & IP Laws',''],
+    ['12:15 – 1:30pm','rest','Lunch — rest your mind',''],
+    ['2pm – 2:45pm','col','College Prep: [your subject]','Final college exam — notes only'],
+    ['3pm – 5pm','exam','📝 COLLEGE EXAM — Last College Exam!','After this, 100% CS focus till the end'],
+    ['5:30 – 8pm','cs','Setting Up of Business Laws – Revision','Labour laws, PF, ESI, LLP provisions']]],
+
+  ['5','JUN','Friday',  'exam',[['exam','CS EXAM']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Setting Up of Business & Labour Laws',''],
+    ['12:15 – 1:30pm','rest','Lunch + Rest',''],
+    ['2pm – 5pm','cs','Tax Laws – Comprehensive Last Revision','GST + Income Tax — the big subject'],
+    ['6pm – 8:30pm','cs','Tax Laws – Weak Areas Only','Past paper mistakes review']]],
+
+  ['6','JUN','Saturday', 'exam',[['exam','CS EXAM']],
+   [['9am – 12:15pm','exam','📝 CS EXAM: Tax Laws & Practice',''],
+    ['12:15 – 1:30pm','rest','Lunch + Brief Walk',''],
+    ['2pm – 5pm','cs','Corporate Accounting & FM – Final Revision','Financial statements, costing, FM'],
+    ['6pm – 8pm','cs','Corporate Accounting – Past Paper Sums','Last numerical drill']]],
+
+  ['7','JUN','Sunday',  'exam',[['exam','CS EXAM — FINAL']],
+   [['9am – 12:15pm','exam','🏆 CS EXAM: Corporate Accounting & FM — DONE!','Subject 7 of 7. It is over. You did it.'],
+    ['12:15pm+','rest','Celebrate!','You have earned every bit of this. So proud of you ✨']]],
+];
+
+function renderCards(data, containerId) {
+  const container = document.getElementById(containerId);
+  data.forEach(d => {
+    container.appendChild(mkCard(d[0],d[1],d[2],d[3],d[4],d[5]));
+  });
+}
+
+renderCards(p1, 'p1-cards');
+renderCards(p2, 'p2-cards');
+renderCards(p3, 'p3-cards');
+</script>
+</body>
+</html>
